@@ -6,15 +6,28 @@ cdir = osp.abspath(osp.dirname(__file__))
 README = open(osp.join(cdir, 'README.rst')).read()
 CHANGELOG = open(osp.join(cdir, 'CHANGELOG.rst')).read()
 
+install_requires = [
+    'Babel',
+    'mock',
+    'six',
+    'speaklater'
+]
+develop_requires = testing_requires = [
+    'flake8',
+    'pytest',
+    'pytest-cov',
+    'tox'
+]
+
 setup(
-    name="lib",
-    setup_requires=['setuptools_scm'],
+    name="morphi",
+    setup_requires=['Babel'],
     use_scm_version=True,
-    description="The starting porint for a keg library",
+    description="i18n services for libraries and applications",
     long_description='\n\n'.join((README, CHANGELOG)),
     author="Level 12 Developers",
     author_email="devteam@level12.io",
-    url='https://github.com/level12/keg-baselib',
+    url='https://github.com/level12/morphi',
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
@@ -26,5 +39,17 @@ setup(
     license='BSD',
     packages=find_packages(),
     zip_safe=True,
-    install_requires=[],
+    install_requires=install_requires,
+    entry_points = """
+    [distutils.commands]
+    compile_catalog = babel.messages.frontend:compile_catalog
+    extract_messages = babel.messages.frontend:extract_messages
+    init_catalog = babel.messages.frontend:init_catalog
+    update_catalog = babel.messages.frontend:update_catalog
+    compile_json = morphi.messages.frontend:CompileJson
+    """,
+    extras_require={
+        'develop': develop_requires,
+        'testing': testing_requires
+    },
 )

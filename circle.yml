@@ -1,21 +1,28 @@
-machine:
-  services:
-    - docker
+version: 2
 
-dependencies:
-  override:
-    # We override the dependencies section so that CircleCI doesn't find the
-    # setup.py and install the dependencies. This is mostly an issue with
-    # libraries but can carry over into applications as well. (NZ)
-    - pwd
+jobs:
+  build:
+    docker:
+      - image: level12/python-test-multi
 
-test:
-  override:
-    - ls -la
-    - /home/ubuntu/$CIRCLE_PROJECT_REPONAME/docker-run-tests
+    steps:
+      - checkout
 
-deployment:
-  codecov:
-    branch: /.*/
-    commands:
-      - bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: install tox
+          command: pip install tox
+
+      - run:
+          name: install flake8-level12
+          command: pip install git+https://github.com/level12/flake8-level12.git
+
+      - run:
+          name: tox
+          command: tox
+
+      - store_test_results:
+          path: .circleci/test-reports/
+
+      - run:
+          name: push code coverage
+          command: bash <(curl -s https://codecov.io/bash) -X coveragepy -t "5b9c35e6-a963-496d-9f83-d65ba6444898"
