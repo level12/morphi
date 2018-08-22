@@ -8,12 +8,12 @@ CHANGELOG = open(osp.join(cdir, 'CHANGELOG.rst')).read()
 
 install_requires = [
     'Babel',
-    'mock',
     'six',
     'speaklater'
 ]
 develop_requires = testing_requires = [
     'flake8',
+    'mock',
     'pytest',
     'pytest-cov',
     'tox'
@@ -21,8 +21,8 @@ develop_requires = testing_requires = [
 
 setup(
     name="morphi",
+    version="0.1.0",
     setup_requires=['Babel'],
-    use_scm_version=True,
     description="i18n services for libraries and applications",
     long_description='\n\n'.join((README, CHANGELOG)),
     author="Level 12 Developers",

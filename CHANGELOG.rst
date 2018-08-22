@@ -9,4 +9,12 @@ adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 Unreleased
 ==========
 
+v0.1.0
+======
+
+2018-08-22
+
+Added
+-----
+
 Add initial translations implementation

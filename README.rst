@@ -1,6 +1,26 @@
 morphi
 ######
 
+Translatable text for applications and libraries.
+
+What is morphi?
+===============
+
+``morphi`` was born out of the need to create a distributable library with internally-localized
+text. Although there are several existing packages which deal with translatable text, they all
+seem to focus on standalone applications; there seems to be very little available for working
+with messages that are distributed along with a packaged library.
+
+
+Foundations
+-----------
+
+``morphi`` is built on ideas gleaned from the following:
+
+ * the built-in gettext module
+ * Babel
+
+
 Translation
 ===========
 
