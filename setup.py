@@ -21,7 +21,7 @@ develop_requires = testing_requires = [
 
 setup(
     name="morphi",
-    version="0.1.0",
+    version="0.1.1",
     setup_requires=['Babel'],
     description="i18n services for libraries and applications",
     long_description='\n\n'.join((README, CHANGELOG)),

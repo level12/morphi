@@ -167,16 +167,32 @@ def get_mo_data(dirname=None, locales=None, domain=None, package_name=None):
     if mo_filename is None:
         return None
 
+    openers = []
+
     if package_name is not None:
-        opener = packages.package_open
-        opener_args = (package_name, mo_filename)
+        openers.append({
+            'opener': packages.package_open,
+            'args': (package_name, mo_filename)
+        })
 
-    else:
-        opener = open
-        opener_args = (mo_filename, 'rb')
+    openers.append({
+        'opener': open,
+        'args': (mo_filename, 'rb')
+    })
 
-    with opener(*opener_args) as f:
-        resource_data = f.read()
+    resource_data = None
+    for config in openers:
+        opener = config['opener']
+        opener_args = config['args']
+
+        try:
+            with opener(*opener_args) as f:
+                resource_data = f.read()
+
+            break
+
+        except NotImplementedError:
+            pass
 
     return resource_data
 
@@ -186,7 +202,7 @@ def gettext_find(domain, localedir=None, languages=None, all=False,  # noqa: C90
     """
     Locate a file using the `gettext` strategy.
 
-    This is a straight copy of `gettext.find`, with the addition of the injected parameters
+    This is almost a straight copy of `gettext.find`
     """
 
     if path_exists is None:
@@ -226,18 +242,22 @@ def gettext_find(domain, localedir=None, languages=None, all=False,  # noqa: C90
         # langpack locale dir
 
         # standard mo file
-        if path_exists(mofile):
-            if all:
-                result.append(mofile)
-            else:
-                return mofile
+        try:
+            if path_exists(mofile):
+                if all:
+                    result.append(mofile)
+                else:
+                    return mofile
 
-        # langpack mofile -> use it
-        if path_exists(mofile_lp):
-            if all:
-                result.append(mofile_lp)
-            else:
-                return mofile_lp
+            # langpack mofile -> use it
+            if path_exists(mofile_lp):
+                if all:
+                    result.append(mofile_lp)
+                else:
+                    return mofile_lp
+
+        except NotImplementedError:
+            pass
 
     return result
 

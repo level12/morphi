@@ -9,6 +9,15 @@ adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 Unreleased
 ==========
 
+
+v0.1.1
+======
+
+2018-09-20
+
+Fix pkg_resources support under pyinstaller
+
+
 v0.1.0
 ======
 
