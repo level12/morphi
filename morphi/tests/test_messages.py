@@ -289,6 +289,14 @@ class TestMessagesManagerGetMoData(object):
         package_open.assert_called_with('foobar', 'foo/bar/baz')
         assert 'mock package open' == data
 
+    def test_filesystem_fallback_for_package_opener(self, find_mo_filename, open, package_open):
+        package_open.side_effect = NotImplementedError
+
+        data = manager.get_mo_data(package_name='foobar')
+        package_open.assert_called_with('foobar', 'foo/bar/baz')
+        open.assert_called_with('foo/bar/baz', 'rb')
+        assert 'mock open' == data
+
 
 class TestMessagesManagerGettextFind(object):
     pass
