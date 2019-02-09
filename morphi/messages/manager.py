@@ -256,7 +256,7 @@ def gettext_find(domain, localedir=None, languages=None, all=False,  # noqa: C90
                 else:
                     return mofile_lp
 
-        except NotImplementedError:
+        except (NotImplementedError, ValueError):
             pass
 
     return result
