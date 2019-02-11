@@ -10,6 +10,14 @@ Unreleased
 ==========
 
 
+v0.1.2
+======
+
+2019-02-11
+
+Fix errors when using invalid user-supplied resource paths with the resource loader
+
+
 v0.1.1
 ======
 
