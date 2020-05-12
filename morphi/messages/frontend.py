@@ -62,6 +62,8 @@ class CompileJson(babel.messages.frontend.compile_catalog, object):
         if not po_files:
             raise DistutilsOptionError('no message catalogs found')
 
+        catalogs_and_errors = {}
+
         for idx, (locale, po_file) in enumerate(po_files):
             json_file = json_files[idx]
             with open(po_file, 'rb') as infile:
@@ -84,7 +86,8 @@ class CompileJson(babel.messages.frontend.compile_catalog, object):
                 self.log.info('catalog %s is marked as fuzzy, skipping', po_file)
                 continue
 
-            for message, errors in catalog.check():
+            catalogs_and_errors[catalog] = catalog_errors = list(catalog.check())
+            for message, errors in catalog_errors:
                 for error in errors:
                     self.log.error(
                         'error: %s:%d: %s', po_file, message.lineno, error
@@ -97,6 +100,8 @@ class CompileJson(babel.messages.frontend.compile_catalog, object):
 
             with open(json_file, 'w') as outfile:
                 self._write_json(outfile, catalog, use_fuzzy=self.use_fuzzy)
+
+        return catalogs_and_errors
 
     @staticmethod
     def _write_json(outfile, catalog, use_fuzzy=False):
