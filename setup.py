@@ -3,8 +3,13 @@ from setuptools import setup, find_packages
 
 
 cdir = osp.abspath(osp.dirname(__file__))
-README = open(osp.join(cdir, 'README.rst')).read()
-CHANGELOG = open(osp.join(cdir, 'CHANGELOG.rst')).read()
+README = open(osp.join(cdir, 'readme.rst')).read()
+CHANGELOG = open(osp.join(cdir, 'changelog.rst')).read()
+
+version_fpath = osp.join(cdir, 'morphi', 'version.py')
+version_globals = {}
+with open(version_fpath) as fo:
+    exec(fo.read(), version_globals)
 
 install_requires = [
     'Babel',
@@ -21,7 +26,7 @@ develop_requires = testing_requires = [
 
 setup(
     name="morphi",
-    version="0.1.2",
+    version=version_globals['VERSION'],
     setup_requires=['Babel'],
     description="i18n services for libraries and applications",
     long_description='\n\n'.join((README, CHANGELOG)),
