@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.2.1 released 2022-10-26
+-------------------------
+
+- update package setup and CI, resolve pkg_resources warning (cd0f750_)
+
+.. _cd0f750: https://github.com/level12/morphi/commit/cd0f750
+
+
 0.2.0 released 2020-05-12
 -------------------------
 
