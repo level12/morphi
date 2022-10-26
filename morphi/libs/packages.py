@@ -1,7 +1,7 @@
+import io
+
 import contextlib
 import pkg_resources
-
-import six
 
 
 def enclose_package_path_exists(package_name):
@@ -30,5 +30,5 @@ def package_open(package_name, filename):
 
     manager = pkg_resources.ResourceManager()
 
-    with contextlib.closing(six.BytesIO(provider.get_resource_string(manager, filename))) as f:
+    with contextlib.closing(io.BytesIO(provider.get_resource_string(manager, filename))) as f:
         yield f

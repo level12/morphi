@@ -1,11 +1,11 @@
 import contextlib
+import io
 import json
+from unittest import mock
 from distutils.dist import Distribution
 
 import babel.support
-import mock
 import pytest
-import six
 
 from morphi.messages import (
     frontend,
@@ -92,7 +92,7 @@ class TestMessagesFrontendCompileJsonWriteJson(object):
         return cmd
 
     def test_write_fuzzy(self, catalog, cmd):
-        with contextlib.closing(six.StringIO()) as f:
+        with contextlib.closing(io.StringIO()) as f:
             cmd._write_json(f, catalog, use_fuzzy=True)
             data = json.loads(f.getvalue())
 
@@ -106,7 +106,7 @@ class TestMessagesFrontendCompileJsonWriteJson(object):
         } == data
 
     def test_elide_fuzzy(self, catalog, cmd):
-        with contextlib.closing(six.StringIO()) as f:
+        with contextlib.closing(io.StringIO()) as f:
             cmd._write_json(f, catalog, use_fuzzy=False)
             data = json.loads(f.getvalue())
 

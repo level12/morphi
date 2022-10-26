@@ -1,10 +1,10 @@
 import contextlib
 import gettext
+import io
 import os
 
 import babel
 import babel.support
-import six
 import speaklater
 
 from morphi.libs import packages
@@ -243,14 +243,16 @@ def gettext_find(domain, localedir=None, languages=None, all=False,  # noqa: C90
 
         # standard mo file
         try:
-            if path_exists(mofile):
+            exists_func = os.path.exists if os.path.isabs(mofile) else path_exists
+            if exists_func(mofile):
                 if all:
                     result.append(mofile)
                 else:
                     return mofile
 
             # langpack mofile -> use it
-            if path_exists(mofile_lp):
+            exists_func = os.path.exists if os.path.isabs(mofile_lp) else path_exists
+            if exists_func(mofile_lp):
                 if all:
                     result.append(mofile_lp)
                 else:
@@ -271,7 +273,7 @@ def load_translations(dirname=None, locales=None, domain=None, package_name=None
     if mo_data is None:
         return babel.support.NullTranslations()
 
-    with contextlib.closing(six.BytesIO(mo_data)) as fp:
+    with contextlib.closing(io.BytesIO(mo_data)) as fp:
         translations = babel.support.Translations(fp=fp,
                                                   domain=domain or package_name)
 
