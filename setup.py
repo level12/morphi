@@ -13,6 +13,7 @@ with open(version_fpath) as fo:
 
 install_requires = [
     'Babel',
+    'pytz',
     'speaklater'
 ]
 develop_requires = testing_requires = [
