@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.2.2 released 2023-03-02
+-------------------------
+
+- include pytz, since babel no longer does by default (4beab17_)
+
+.. _4beab17: https://github.com/level12/morphi/commit/4beab17
+
+
 0.2.1 released 2022-10-26
 -------------------------
 
