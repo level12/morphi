@@ -10,11 +10,11 @@ jobs:
 
       - run:
           name: install tox
-          command: pip install tox
+          command: pip3.12 install tox
 
       - run:
           name: install flake8-level12
-          command: pip install git+https://github.com/level12/flake8-level12.git
+          command: pip3.12 install git+https://github.com/level12/flake8-level12.git
 
       - run:
           name: tox
