@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.3.0 released 2024-12-18
+-------------------------
+
+- fix deprecated pkg_resources usage (de64dba_)
+
+.. _de64dba: https://github.com/level12/morphi/commit/de64dba
+
+
 0.2.2 released 2023-03-02
 -------------------------
 
