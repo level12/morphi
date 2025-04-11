@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.3.1 released 2025-04-11
+-------------------------
+
+- support pyproject.toml apps (b32aa95_)
+
+.. _b32aa95: https://github.com/level12/morphi/commit/b32aa95
+
+
 0.3.0 released 2024-12-18
 -------------------------
 
