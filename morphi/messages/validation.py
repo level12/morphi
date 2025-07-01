@@ -49,6 +49,8 @@ def check_translations(
 ):
     root_path = Path(root_path)
     setup_py = root_path / 'setup.py'
+    i18n_dir = root_path / package_name / 'i18n'
+    domain = package_name
 
     if setup_py.exists():
         # Use existing setup.py approach
