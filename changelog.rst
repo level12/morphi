@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.3.2 released 2025-07-10
+-------------------------
+
+- fix regression for consumers using setup.py (b7eeb2a_)
+
+.. _b7eeb2a: https://github.com/level12/morphi/commit/b7eeb2a
+
+
 0.3.1 released 2025-04-11
 -------------------------
 
