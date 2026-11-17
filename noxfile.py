@@ -17,7 +17,7 @@ stable_runtime_dependencies = (
 )
 
 
-@nox.session(python=['3.10', '3.11', '3.12'])
+@nox.session(python=['3.10', '3.11', '3.12', '3.13', '3.14'])
 def pytest(session: nox.Session):
     uv_sync(session, 'pytest')
     pytest_run(session)
