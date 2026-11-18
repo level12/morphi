@@ -10,8 +10,8 @@ is_circleci = 'CIRCLECI' in environ
 nox.options.default_venv_backend = 'uv'
 
 stable_runtime_dependencies = (
-    'Babel==2.10.3',
-    'pytz==2022.5',
+    'Babel==2.18.0',
+    'pytz==2026.6',
     'speaklater==1.3',
     'tomli==2.0.1',
 )
