@@ -17,7 +17,7 @@ stable_runtime_dependencies = (
 )
 
 
-@nox.session(python=['3.12', '3.13', '3.14'])
+@nox.session(python=['3.12', '3.13', '3.14', '3.15'])
 def pytest(session: nox.Session):
     uv_sync(session, 'pytest')
     pytest_run(session)
@@ -80,7 +80,7 @@ def pytest_run(session: nox.Session, *args, **env):
     """
     Using functions for pytest and uv enables more advanced uses cases.  Examples:
 
-    py_all = ['3.12', '3.13', '3.14']
+    py_all = ['3.12', '3.13', '3.14', '3.15']
 
     @session(py=py_all)
     @parametrize('db', ['pg', 'sqlite'])
