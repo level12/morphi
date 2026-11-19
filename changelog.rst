@@ -1,6 +1,15 @@
 Changelog
 =========
 
+0.20261119.1 released 2026-11-19
+--------------------------------
+
+- modernize packaging and development tooling with Coppy, uv, Nox, prek, and
+  GitHub Actions
+- support and test Python 3.12 through 3.15
+- refresh the stable dependency set and remove obsolete warning suppressions
+
+
 0.3.2 released 2025-07-10
 -------------------------
 

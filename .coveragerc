@@ -1,2 +1,13 @@
+# .coveragerc to control coverage.py
 [run]
 branch = True
+omit =
+    src/morphi/version.py
+
+source =
+    src/morphi
+    tests/morphi_tests
+
+
+[html]
+directory = tmp/coverage-html
