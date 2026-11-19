@@ -1,5 +1,8 @@
 # morphi
 
+[![nox](https://github.com/level12/morphi/actions/workflows/nox.yaml/badge.svg)](https://github.com/level12/morphi/actions/workflows/nox.yaml)
+[![codecov](https://codecov.io/gh/level12/morphi/branch/master/graph/badge.svg)](https://codecov.io/gh/level12/morphi)
+
 Translatable text for applications and libraries.
 
 
